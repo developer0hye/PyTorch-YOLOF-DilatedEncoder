@@ -1,3 +1,6 @@
+import torch
+import torch.nn as nn
+
 def c2_xavier_fill(module: nn.Module):
   """
   Initialize `module.weight` using the "XavierFill" implemented in Caffe2.
