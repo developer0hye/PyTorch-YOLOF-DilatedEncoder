@@ -16,7 +16,10 @@ def c2_xavier_fill(module: nn.Module):
 
 
 class Bottleneck(nn.Module):
-
+  """Residual Block for DarkNet.
+  This module has the dowsample layer (optional),
+  1x1 conv layer and 3x3 conv layer.
+  """
   def __init__(self,
     in_channels: int = 512,
     mid_channels: int = 128,
@@ -53,10 +56,7 @@ class DilatedEncoder(nn.Module):
     mid_channels,
     dilation_growth_factor=2,
     num_residual_blocks=4):
-    """Residual Block for DarkNet.
-    This module has the dowsample layer (optional),
-    1x1 conv layer and 3x3 conv layer.
-    """
+
     super(DilatedEncoder, self).__init__()
 
     self.lateral_conv = nn.Conv2d(in_channels,
