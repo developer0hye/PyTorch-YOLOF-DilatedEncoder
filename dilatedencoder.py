@@ -1,6 +1,3 @@
-import torch
-import torch.nn as nn
-
 def c2_xavier_fill(module: nn.Module):
   """
   Initialize `module.weight` using the "XavierFill" implemented in Caffe2.
@@ -54,6 +51,7 @@ class DilatedEncoder(nn.Module):
   def __init__(self,
     in_channels,
     mid_channels,
+    encoder_channels,
     dilation_growth_factor=2,
     num_residual_blocks=4):
 
@@ -76,7 +74,7 @@ class DilatedEncoder(nn.Module):
       encoder_blocks.append(
       Bottleneck(
       mid_channels,
-      in_channels,
+      encoder_channels,
       dilation=dilation
       )
       )
